@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Prediction</title>
+    
+    
+    <!-- Page styling for layout, colours, spacing, and typography -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef1f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: #007bff;
+            padding: 15px 30px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .container {
+            background: #ffffff;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 30px;
+            color: #333;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 30px;
+            width: 100%;
+            padding: 14px;
+            background: #007bff;
+            color: white;
+            border: none;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!-- Header bar -->
+    <div class="navbar">
+        Breast Cancer Prediction System
+    </div>
+    
+   
+    <!-- Main form container -->
+    <div class="container">
+        <h1>Enter Patient Tumor Measurements</h1>
+        
+        
+        <!-- Form sends data to Flask backend via POST -->
+        <form action="/predict" method="POST">
+            
+            
+            <!-- Grid containing all 30 numeric input fields -->
+            <div class="grid">
+
+                <!-- MEAN FEATURES -->
+                <div><label>Radius Mean</label><input name="radius_mean" type="number" step="any" required></div>
+                <div><label>Texture Mean</label><input name="texture_mean" type="number" step="any" required></div>
+                <div><label>Perimeter Mean</label><input name="perimeter_mean" type="number" step="any" required></div>
+                <div><label>Area Mean</label><input name="area_mean" type="number" step="any" required></div>
+                <div><label>Smoothness Mean</label><input name="smoothness_mean" type="number" step="any" required></div>
+                <div><label>Compactness Mean</label><input name="compactness_mean" type="number" step="any" required></div>
+                <div><label>Concavity Mean</label><input name="concavity_mean" type="number" step="any" required></div>
+                <div><label>Concave Points Mean</label><input name="concave_points_mean" type="number" step="any" required></div>
+                <div><label>Symmetry Mean</label><input name="symmetry_mean" type="number" step="any" required></div>
+                <div><label>Fractal Dimension Mean</label><input name="fractal_dimension_mean" type="number" step="any" required></div>
+                
+            
+                <!-- STANDARD ERROR FEATURES -->
+                <div><label>Radius SE</label><input name="radius_se" type="number" step="any" required></div>
+                <div><label>Texture SE</label><input name="texture_se" type="number" step="any" required></div>
+                <div><label>Perimeter SE</label><input name="perimeter_se" type="number" step="any" required></div>
+                <div><label>Area SE</label><input name="area_se" type="number" step="any" required></div>
+                <div><label>Smoothness SE</label><input name="smoothness_se" type="number" step="any" required></div>
+                <div><label>Compactness SE</label><input name="compactness_se" type="number" step="any" required></div>
+                <div><label>Concavity SE</label><input name="concavity_se" type="number" step="any" required></div>
+                <div><label>Concave Points SE</label><input name="concave_points_se" type="number" step="any" required></div>
+                <div><label>Symmetry SE</label><input name="symmetry_se" type="number" step="any" required></div>
+                <div><label>Fractal Dimension SE</label><input name="fractal_dimension_se" type="number" step="any" required></div>
+                
+                
+                <!-- WORST FEATURES -->
+                <div><label>Radius Worst</label><input name="radius_worst" type="number" step="any" required></div>
+                <div><label>Texture Worst</label><input name="texture_worst" type="number" step="any" required></div>
+                <div><label>Perimeter Worst</label><input name="perimeter_worst" type="number" step="any" required></div>
+                <div><label>Area Worst</label><input name="area_worst" type="number" step="any" required></div>
+                <div><label>Smoothness Worst</label><input name="smoothness_worst" type="number" step="any" required></div>
+                <div><label>Compactness Worst</label><input name="compactness_worst" type="number" step="any" required></div>
+                <div><label>Concavity Worst</label><input name="concavity_worst" type="number" step="any" required></div>
+                <div><label>Concave Points Worst</label><input name="concave_points_worst" type="number" step="any" required></div>
+                <div><label>Symmetry Worst</label><input name="symmetry_worst" type="number" step="any" required></div>
+                <div><label>Fractal Dimension Worst</label><input name="fractal_dimension_worst" type="number" step="any" required></div>
+
+            </div>
+            
+            <!-- Submit button triggers prediction -->
+            <button type="submit">Predict</button>
+
+        </form>
+    </div>
+    
+    
+    <!-- Footer Section -->
+    <div class="footer">
+        © 2025 Breast Cancer Prediction System — Academic Use Only
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+          
+          
+
+
+

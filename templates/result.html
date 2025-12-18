@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    
+   
+    <!-- Page styling for layout,colours, and typography-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef1f5;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            max-width: 650px;
+            margin: auto;
+            padding: 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .result-box {
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .benign {
+            background: #d4edda;
+            color: #155724;
+            border-left: 8px solid #28a745;
+        }
+
+        .malignant {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 8px solid #dc3545;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 18px;
+            transition: 0.2s ease-in-out;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+   
+    <!-- Main content wrapper-->
+    <div class="container">
+        <h1>Breast Cancer Prediction Result</h1>
+       
+        <!-- Conditional rendering based on model prediction-->
+        {% if prediction == "Benign" %}
+            <div class="result-box benign">
+                The tumor is predicted to be <strong>Benign</strong>.
+            </div>
+        {% else %}
+            <div class="result-box malignant">
+                The tumor is predicted to be <strong>Malignant</strong>.
+            </div>
+        {% endif %}
+        
+        
+        <!-- Navigation button back to the input form -->
+        <a href="/" class="back-btn">Back to Form</a>
+    </div>
+
+</body>
+</html>
